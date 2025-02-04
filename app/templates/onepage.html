@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de ejemplo</title>
+    <style>
+        #cards-container {
+            min-height: 2000px; 
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row" id="cards-container">
+            
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Tarjeta 1</h5>
+                    <p class="card-text">Esta es la tarjeta 1.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Tarjeta 2</h5>
+                    <p class="card-text">Esta es la tarjeta 2.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Tarjeta 3</h5>
+                    <p class="card-text">Esta es la tarjeta 3.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var cardCount = 4; 
+        var maxCards = 100; 
+
+        function loadCards() {
+          
+            if (cardCount > maxCards) return;  
+
+            console.log("Acabas de scrollear hasta abajo");
+
+            var contenedor = document.getElementById("cards-container");
+
+         
+            for (var i = 0; i < 3 && cardCount <= maxCards; i++) {  
+                var card = document.createElement("div");
+                card.classList.add("card");
+                card.style.width = "18rem";
+
+                var body = document.createElement("div");
+                body.classList.add("card-body");
+
+                var h5 = document.createElement("h5");
+                h5.classList.add("card-title");
+                h5.innerText = "Tarjeta " + cardCount;  
+
+                var p = document.createElement("p");
+                p.classList.add("card-text");
+                p.innerText = "Esta es la tarjeta número " + cardCount;  
+
+                var a = document.createElement("a");
+                a.classList.add("btn", "btn-primary");
+                a.href = "#";
+                a.innerText = "Go somewhere";  
+
+                
+                body.appendChild(h5);
+                body.appendChild(p);
+                body.appendChild(a);
+                card.appendChild(body);
+
+                
+                contenedor.appendChild(card);
+
+                cardCount++;  
+            }
+        }
+
+       
+        loadCards();  
+
+       
+        window.addEventListener('scroll', function() {
+            var nearBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200; 
+            if (nearBottom) {
+                loadCards();  
+            }
+        });
+    </script>
+
+</body>
+
+</html>
